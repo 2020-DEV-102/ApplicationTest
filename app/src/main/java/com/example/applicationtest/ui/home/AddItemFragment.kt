@@ -1,17 +1,22 @@
 package com.example.applicationtest.ui.home
 
-import androidx.lifecycle.ViewModelProviders
+import android.app.Activity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.applicationtest.R
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
 import com.example.applicationtest.databinding.AddItemFragmentBinding
+import com.example.applicationtest.utilities.ContextExtensions
+import com.example.applicationtest.utilities.ContextExtensions.hideKeyboard
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class AddItemFragment : Fragment() {
 
-    private lateinit var viewModel: AddItemViewModel
+    private val addItemViewModel: AddItemViewModel by viewModel()
     private lateinit var binding : AddItemFragmentBinding
 
     companion object {
@@ -26,16 +31,14 @@ class AddItemFragment : Fragment() {
 
         binding.addItemButton.setOnClickListener()
         {
-
+            addItemViewModel.addCharacter(binding.name.text.toString(), binding.description.text.toString() )
+            hideKeyboard()
         }
 
+        binding.root.setOnClickListener()
+        {
+            hideKeyboard()
+        }
         return binding.root
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(AddItemViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }

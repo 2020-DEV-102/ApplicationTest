@@ -21,7 +21,6 @@ class CharacterRepository constructor (private val characterDao: CharacterDao)  
     }
 
     private fun subscribeToDatabase() {
-        //characterDao.insertCharacter(character = Character(0, "Jean", "Dupont"))
         val sourceDb = characterDao.getAll()
         _characters.postValue(Resource.loading(emptyArray()))
 
@@ -30,29 +29,10 @@ class CharacterRepository constructor (private val characterDao: CharacterDao)  
         }
     }
 
-    suspend fun addCharacter()
+    suspend fun addCharacter(character : Character)
     {
         withContext(Dispatchers.IO) {
-            characterDao.insertCharacter(character = Character(0, "Jean", "Dupont"))
+            characterDao.insertCharacter(character)
         }
     }
-
-    /*private fun CoroutineScope.getCharacters() = produce {
-        val lastData: Array<Character> = characters.value?.data ?: emptyArray()
-        send(Resource.loading(lastData))
-
-        Fuel.request(CoinRouting.GetCharacters())
-            .awaitObjectResult(coinResultDeserializer)
-            .fold(success = { response ->
-                characterDao.insertAll(response.data)
-            }, failure = { error ->
-                send(Resource.error(error, lastData))
-            })
-    }
-
-    fun fetchCharacters() = GlobalScope.launch {
-        for (coin in getCharacters()) {
-            _characters.postValue(coin)
-        }
-    }*/
 }

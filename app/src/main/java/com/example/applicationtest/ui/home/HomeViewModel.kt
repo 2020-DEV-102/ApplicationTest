@@ -15,8 +15,6 @@ class HomeViewModel constructor(
     private val characterRepository: CharacterRepository
 ) : ViewModel() {
 
-    //val cRepository = characterRepository
-
     val characters: LiveData<Resource<Array<Character>>> = characterRepository.characters
 
     private val _text = MutableLiveData<String>().apply {
@@ -39,18 +37,7 @@ class HomeViewModel constructor(
         var itemDatas = listOf(item1, item2)
 
         value = itemDatas
-
-       /* var sub = ItemsRepository.getInstance().provideItems()?.subscribe({
-            value = it
-        }, {
-            Log.d(TAG, it.message!!)
-        })*/
     }
-
-    /*fun getCharacters() : List<Character>
-    {
-        return characterRepository.getCharacters()
-    }*/
 
     fun getItems(): LiveData<List<Item>> {
         return items
@@ -60,7 +47,7 @@ class HomeViewModel constructor(
         viewModelScope.launch {
             try {
                 //_loadingState.value = LoadingState.LOADING
-                characterRepository.addCharacter()
+                //characterRepository.addCharacter()
                 //_loadingState.value = LoadingState.LOADED
             } catch (e: Exception) {
                 //_loadingState.value = LoadingState.error(e.message)

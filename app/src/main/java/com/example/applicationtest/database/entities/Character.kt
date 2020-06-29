@@ -6,9 +6,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Character ( @PrimaryKey val cid: Int,
-                        @ColumnInfo(name = "first_name") val firstName: String?,
-                        @ColumnInfo(name = "last_name") val lastName: String?)
+data class Character ( @PrimaryKey(autoGenerate = true) val cid: Int = 0,
+                        @ColumnInfo(name = "name") val name: String?,
+                        @ColumnInfo(name = "description") val description: String?)
 {
 
 }
