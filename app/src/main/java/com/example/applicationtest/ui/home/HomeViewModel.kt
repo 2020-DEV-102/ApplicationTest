@@ -4,14 +4,20 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.applicationtest.database.entities.Character
 import com.example.applicationtest.models.Item
 import com.example.applicationtest.repositories.CharacterRepository
+import com.example.applicationtest.repositories.Resource
+import kotlinx.coroutines.launch
 
 class HomeViewModel constructor(
     private val characterRepository: CharacterRepository
 ) : ViewModel() {
 
     //val cRepository = characterRepository
+
+    val characters: LiveData<Resource<Array<Character>>> = characterRepository.characters
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"
@@ -50,10 +56,24 @@ class HomeViewModel constructor(
         return items
     }
 
+    private fun addCharacter() {
+        viewModelScope.launch {
+            try {
+                //_loadingState.value = LoadingState.LOADING
+                characterRepository.addCharacter()
+                //_loadingState.value = LoadingState.LOADED
+            } catch (e: Exception) {
+                //_loadingState.value = LoadingState.error(e.message)
+            }
+        }
+    }
+
     fun updateItems()
     {
         Log.d("TAG", "test");
         _text.value = "toto";
         var toto = "toto"
+
+        addCharacter()
     }
 }

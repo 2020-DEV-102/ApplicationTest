@@ -4,6 +4,7 @@ import androidx.room.Room
 import com.example.applicationtest.database.AppDatabase
 import com.example.applicationtest.database.entities.Character
 import com.example.applicationtest.repositories.CharacterRepository
+import com.example.applicationtest.ui.home.AddItemViewModel
 import com.example.applicationtest.ui.home.HomeViewModel
 import com.example.applicationtest.utilities.Constants
 import com.google.gson.GsonBuilder
@@ -30,4 +31,5 @@ val appModule = module {
     }
     single { CharacterRepository(get()) }
     viewModel { HomeViewModel(get()) }
+    viewModel { AddItemViewModel(get()) }
 }

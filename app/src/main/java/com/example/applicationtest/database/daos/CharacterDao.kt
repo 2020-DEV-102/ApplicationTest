@@ -1,15 +1,13 @@
 package com.example.applicationtest.database.daos
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import com.example.applicationtest.database.entities.Character
 
 @Dao
 interface CharacterDao {
     @Query("SELECT * FROM character")
-    fun getAll(): List<Character>
+    fun getAll(): LiveData<Array<Character>>
 
     /*@Query("SELECT * FROM character WHERE cid IN (:characterIds)")
     fun loadAllByIds(characterIds: IntArray): List<Character>*/
@@ -18,14 +16,14 @@ interface CharacterDao {
             "last_name LIKE :last LIMIT 1")
     fun findByName(first: String, last: String): Character*/
 
-    /*@Insert
-    fun insertAll(vararg characters: List<Character>)*/
+   /* @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(characters: Array<Character>)*/
 
-    /*@Insert
-    fun insertAll(vararg characters: Character)*/
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(vararg characters: Character)
 
-    /*@Insert
-    fun insertCharacter(vararg character: Character)*/
+    @Insert (onConflict = OnConflictStrategy.REPLACE)
+    fun insertCharacter(character: Character)
 
     @Delete
     fun delete(character: Character)
