@@ -10,11 +10,12 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applicationtest.adapters.ItemAdapter
 import com.example.applicationtest.databinding.FragmentHomeBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
     private lateinit var itemsRecyclerView: RecyclerView
-    private lateinit var homeViewModel: HomeViewModel
+    private val homeViewModel: HomeViewModel by viewModel()
     private lateinit var binding : FragmentHomeBinding
 
     override fun onCreateView(
@@ -23,7 +24,7 @@ class HomeFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View?
     {
-        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        //homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         context ?: return binding.root

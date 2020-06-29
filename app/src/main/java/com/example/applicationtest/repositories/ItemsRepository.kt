@@ -1,14 +1,17 @@
-package com.example.applicationtest.services
+package com.example.applicationtest.repositories
 
 import android.util.Log
 import com.example.applicationtest.models.Item
+import com.example.applicationtest.services.APIManager
+import com.example.applicationtest.services.IItemsService
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class ItemsRepository {
     fun provideItems(): Observable<List<Item>>? {
-        val itemService: IItemsService = APIManager.getInstance().retrofit.create(IItemsService::class.java)
+        val itemService: IItemsService = APIManager.getInstance().retrofit.create(
+            IItemsService::class.java)
         return itemService.getItems()
             .flatMap { historic ->
 
@@ -29,8 +32,11 @@ class ItemsRepository {
         @Volatile private var instance: ItemsRepository? = null
 
         fun getInstance() =
-            instance ?: synchronized(this) {
-                instance ?: ItemsRepository().also { instance = it }
+            instance
+                ?: synchronized(this) {
+                instance
+                    ?: ItemsRepository()
+                        .also { instance = it }
             }
     }
 }

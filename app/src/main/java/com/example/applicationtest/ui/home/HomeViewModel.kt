@@ -1,28 +1,15 @@
 package com.example.applicationtest.ui.home
 
-import android.content.ContentValues.TAG
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.applicationtest.database.entities.Character
 import com.example.applicationtest.models.Item
 import com.example.applicationtest.repositories.CharacterRepository
-import com.example.applicationtest.services.APIManager
-import com.example.applicationtest.services.IItemsService
-import com.example.applicationtest.services.ItemsRepository
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import java.net.ConnectException
-import java.util.Calendar.getInstance
-import javax.inject.Inject
 
-class HomeViewModel /*@Inject constructor(
+class HomeViewModel constructor(
     private val characterRepository: CharacterRepository
-)*/ : ViewModel() {
+) : ViewModel() {
 
     //val cRepository = characterRepository
 
