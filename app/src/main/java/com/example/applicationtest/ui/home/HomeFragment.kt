@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.RecyclerView
 import com.example.applicationtest.adapters.ItemAdapter
 import com.example.applicationtest.database.entities.Character
 import com.example.applicationtest.databinding.FragmentHomeBinding
 import com.example.applicationtest.repositories.Resource
 import com.example.applicationtest.repositories.Status
+import com.example.applicationtest.viewmodels.HomeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {

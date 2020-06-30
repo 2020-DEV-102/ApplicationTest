@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener {
-            navController.navigate(R.id.nav_add_item)
+            navController.navigate(R.id.nav_add_character)
             /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()*/
         }
