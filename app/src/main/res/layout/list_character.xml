@@ -8,8 +8,8 @@
             name="clickListener"
             type="android.view.View.OnClickListener"/>
         <variable
-            name="item"
-            type="com.example.applicationtest.models.Item"/>
+            name="character"
+            type="com.example.applicationtest.database.entities.Character"/>
     </data>
 
     <androidx.cardview.widget.CardView
@@ -28,7 +28,7 @@
             <TextView
                 android:id="@+id/item_name"
                 android:layout_width="0dp"
-                android:text="@{item.name}"
+                android:text="@{character.name}"
                 android:textColor="@android:color/black"
                 android:gravity="center_horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +41,7 @@
                 android:id="@+id/item_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{item.description}"
+                android:text="@{character.description}"
                 android:textColor="@android:color/black"
                 android:gravity="center_horizontal"
                 app:layout_constraintEnd_toEndOf="parent"

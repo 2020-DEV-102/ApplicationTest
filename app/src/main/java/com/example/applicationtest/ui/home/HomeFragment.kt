@@ -33,8 +33,8 @@ class HomeFragment : Fragment() {
         val adapter = ItemAdapter()
         binding.applicationsList.adapter = adapter
 
-        homeViewModel.getItems().observe(viewLifecycleOwner, Observer {
-            adapter.submitList(it)
+        homeViewModel.characters.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it.data!!.toList())
         })
 
         binding.monBouton.setOnClickListener {

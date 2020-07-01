@@ -6,6 +6,7 @@ import com.example.applicationtest.repositories.CharacterRepository
 import com.example.applicationtest.viewmodels.AddCharacterViewModel
 import com.example.applicationtest.viewmodels.HomeViewModel
 import com.example.applicationtest.utilities.Constants
+import com.example.applicationtest.viewmodels.ItemDetailViewModel
 import org.koin.dsl.module
 import org.koin.androidx.viewmodel.dsl.viewModel
 
@@ -27,6 +28,8 @@ val appModule = module {
         get<AppDatabase>().characterDao()
     }
     single { CharacterRepository(get()) }
+
     viewModel { HomeViewModel(get()) }
     viewModel { AddCharacterViewModel(get()) }
+    viewModel { ItemDetailViewModel(get()) }
 }

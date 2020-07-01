@@ -6,14 +6,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.applicationtest.ui.itemDetail.ItemDetailViewModel"/>
+            type="com.example.applicationtest.viewmodels.ItemDetailViewModel"/>
     </data>
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.item.description}"
+            android:text="@{viewModel.character.description}"
             android:layout_gravity="start"
             tools:text="description"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
