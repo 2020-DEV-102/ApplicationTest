@@ -10,67 +10,103 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.addCharacter.AddCharacterFragment"
-        android:clickable="true"
-        android:focusable="true" >
+        tools:context=".ui.addCharacter.AddCharacterFragment">
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/margin_left"
+            android:id="@+id/line_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.1"/>
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/margin_right"
+            android:id="@+id/line_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.9"/>
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.75"/>
 
-        <TextView
-            android:id="@+id/add_character_text"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/add_character"
-            android:gravity="center"
-            android:textSize="@dimen/title_text_size"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_height="0dp"
+            android:background="@color/colorAccent"
+            app:cardCornerRadius="@dimen/big_card_side_margin"
+            app:layout_constraintTop_toBottomOf="@id/line_top"
+            app:layout_constraintBottom_toTopOf="@id/line_bottom">
 
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/add_character_text"
-            app:layout_constraintBottom_toTopOf="@id/description"
-            app:layout_constraintEnd_toStartOf="@id/margin_right"
-            app:layout_constraintStart_toEndOf="@id/margin_left"
-            android:hint="Nom" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
 
-        <EditText
-            android:id="@+id/description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Description"
-            app:layout_constraintBottom_toTopOf="@id/add_item_button"
-            app:layout_constraintEnd_toStartOf="@+id/margin_right"
-            app:layout_constraintStart_toEndOf="@id/margin_left"
-            app:layout_constraintTop_toTopOf="@id/name" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/margin_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.1"/>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/margin_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.9"/>
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/edit_text_spacing"
+                    android:hint="Nom"
+                    app:layout_constraintStart_toEndOf="@id/margin_left"
+                    app:layout_constraintEnd_toStartOf="@id/margin_right"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/description"/>
+
+                <EditText
+                    android:id="@+id/description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Description"
+                    app:layout_constraintEnd_toStartOf="@id/margin_right"
+                    app:layout_constraintStart_toEndOf="@id/margin_left"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/name"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/add_item_button"
+            android:id="@+id/cancel_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorMain"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/add_character_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintTop_toBottomOf="@id/line_bottom"
+            android:text="@string/cancel"
+            android:textColor="@color/colorPrimary"/>
+
+        <Button
+            android:id="@+id/add_character_button"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toEndOf="@id/cancel_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line_bottom"
             android:text="@string/add"
-            android:textColor="@android:color/white"/>
+            android:textColor="@color/colorPrimary"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,18 +1,16 @@
-package com.example.applicationtest
+package com.example.applicationtest.activities
 
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.navArgs
+import com.example.applicationtest.R
 import com.example.applicationtest.ui.itemDetail.ItemDetailFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
 
-class ItemDetailActivity : AppCompatActivity() {
+class ItemDetailActivity : NavigableActivity() {
 
     private val args: ItemDetailActivityArgs by navArgs()
 
@@ -32,22 +30,5 @@ class ItemDetailActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        onBackPressed()
-        return true
-    }
-
-    override fun onKeyUp(keyCode: Int, objEvent: KeyEvent?): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            onBackPressed()
-            return true
-        }
-        return super.onKeyUp(keyCode, objEvent)
-    }
-
-    override fun onBackPressed() {
-        finish()
     }
 }

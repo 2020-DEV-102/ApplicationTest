@@ -1,4 +1,4 @@
-package com.example.applicationtest.ui.itemDetail
+package com.example.applicationtest.viewmodels
 
 import android.content.ClipData
 import androidx.lifecycle.ViewModel

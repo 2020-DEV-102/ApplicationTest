@@ -1,6 +1,5 @@
 package com.example.applicationtest.ui.itemDetail
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.applicationtest.databinding.ItemDetailFragmentBinding
+import com.example.applicationtest.factories.ItemDetailViewModelFactory
 import com.example.applicationtest.models.Item
+import com.example.applicationtest.viewmodels.ItemDetailViewModel
 
 
 class ItemDetailFragment : Fragment() {
@@ -46,7 +47,9 @@ class ItemDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val myItemDetailViewModel: ItemDetailViewModel by viewModels {
-            ItemDetailViewModelFactory(myItem)
+            ItemDetailViewModelFactory(
+                myItem
+            )
         }
 
         itemDetailViewModel = myItemDetailViewModel

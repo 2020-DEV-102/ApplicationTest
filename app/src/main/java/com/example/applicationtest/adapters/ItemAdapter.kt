@@ -5,12 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.applicationtest.R
 import com.example.applicationtest.adapters.viewholders.ItemViewHolder
 import com.example.applicationtest.databinding.ListItemBinding
-import com.example.applicationtest.models.Item
+import com.example.applicationtest.database.entities.Character
 
-class ItemAdapter : ListAdapter<Item, RecyclerView.ViewHolder>(ItemDiffCallback()) {
+class ItemAdapter : ListAdapter<Character, RecyclerView.ViewHolder>(CharacterDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ItemViewHolder(
             ListItemBinding.inflate(
@@ -24,13 +23,13 @@ class ItemAdapter : ListAdapter<Item, RecyclerView.ViewHolder>(ItemDiffCallback(
 }
 
 // Lors d'un rechargement de la liste, compare les élements
-private class ItemDiffCallback : DiffUtil.ItemCallback<Item>() {
+private class CharacterDiffCallback : DiffUtil.ItemCallback<Character>() {
 
-    override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
-        return oldItem.id == newItem.id
+    override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean {
+        return oldItem.cid == newItem.cid
     }
 
-    override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+    override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean {
         return oldItem.equals(newItem)
     }
 }

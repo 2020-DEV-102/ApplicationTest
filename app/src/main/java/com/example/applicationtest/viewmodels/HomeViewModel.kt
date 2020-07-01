@@ -43,6 +43,11 @@ class HomeViewModel constructor(
         return items
     }
 
+    fun getCharactersList() : List<Character>
+    {
+        return characters.value!!.data!!.toList()
+    }
+
     private fun addCharacter() {
         viewModelScope.launch {
             try {
