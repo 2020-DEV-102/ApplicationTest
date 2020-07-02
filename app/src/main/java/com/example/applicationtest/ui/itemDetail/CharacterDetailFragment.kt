@@ -8,37 +8,30 @@ import android.widget.ImageView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.applicationtest.databinding.ItemDetailFragmentBinding
+import com.example.applicationtest.databinding.CharacterDetailFragmentBinding
 import com.example.applicationtest.factories.ItemDetailViewModelFactory
-import com.example.applicationtest.models.Item
 import com.example.applicationtest.viewmodels.ItemDetailViewModel
 
 
-class ItemDetailFragment : Fragment() {
+class CharacterDetailFragment : Fragment() {
 
-    private lateinit var binding : ItemDetailFragmentBinding
-    private lateinit var collBarLayout: Toolbar
-    private lateinit var imageView : ImageView
-    private var myItem: Item = Item()
+    private lateinit var binding : CharacterDetailFragmentBinding
+    private var characterId : Int = 0
     private lateinit var itemDetailViewModel : ItemDetailViewModel
 
     companion object {
         @JvmStatic
-        fun newInstance(myItem: Item?) = ItemDetailFragment().apply {
+        fun newInstance(characterId: Int) = CharacterDetailFragment().apply {
             arguments = Bundle().apply {
-                putSerializable("ITEM", myItem)
+                putInt("CHARACTER_ID", characterId)
             }
         }
     }
 
-    /*private val itemDetailViewModel: ItemDetailViewModel by viewModels {
-        ItemDetailViewModelFactory(myItem)
-    }*/
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.getSerializable("ITEM")?.let {
-            myItem = it as Item
+        arguments?.getInt("CHARACTER_ID")?.let {
+            characterId = it
         }
     }
 
@@ -47,23 +40,14 @@ class ItemDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val myItemDetailViewModel: ItemDetailViewModel by viewModels {
-            ItemDetailViewModelFactory(
-                myItem
-            )
+            ItemDetailViewModelFactory(characterId)
         }
-
         itemDetailViewModel = myItemDetailViewModel
 
-        binding = ItemDetailFragmentBinding.inflate(inflater, container, false).apply {
+        binding = CharacterDetailFragmentBinding.inflate(inflater, container, false).apply {
             viewModel = itemDetailViewModel
         }
 
         return binding.root
     }
-
-    /*override fun onDestroyView() {
-        super.onDestroyView()
-        collBarLayout.removeView(imageView)
-        collBarLayout.isTitleEnabled = false
-    }*/
 }

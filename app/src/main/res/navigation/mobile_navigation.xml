@@ -16,17 +16,13 @@
     </fragment>
 
     <activity android:id="@+id/item_detail_activity"
-        android:name="com.example.applicationtest.activities.ItemDetailActivity"
+        android:name="com.example.applicationtest.activities.CharacterDetailActivity"
         android:label="{title}"
-        tools:layout="@layout/activity_item_detail">
+        tools:layout="@layout/activity_character_detail">
         <argument
-            android:name="title"
-            app:argType="string"/>
-        <argument
-            android:name="itemArg"
-            app:argType="com.example.applicationtest.models.Item"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            android:name="characterId"
+            app:argType="integer"
+            android:defaultValue="0"/>
     </activity>
 
     <activity android:id="@+id/nav_add_character_activity"
@@ -36,8 +32,8 @@
 
     <fragment
         android:id="@+id/nav_item_detail"
-        android:name="com.example.applicationtest.ui.itemDetail.ItemDetailFragment"
-        tools:layout="@layout/item_detail_fragment" />
+        android:name="com.example.applicationtest.ui.itemDetail.CharacterDetailFragment"
+        tools:layout="@layout/character_detail_fragment" />
 
     <fragment
         android:id="@+id/nav_gallery"

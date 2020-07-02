@@ -5,20 +5,20 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.applicationtest.adapters.viewholders.ItemViewHolder
-import com.example.applicationtest.databinding.ListItemBinding
+import com.example.applicationtest.adapters.viewholders.CharacterViewHolder
 import com.example.applicationtest.database.entities.Character
+import com.example.applicationtest.databinding.ListCharacterBinding
 
 class ItemAdapter : ListAdapter<Character, RecyclerView.ViewHolder>(CharacterDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ItemViewHolder(
-            ListItemBinding.inflate(
+        return CharacterViewHolder(
+            ListCharacterBinding.inflate(
             LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
-        (holder as ItemViewHolder).bind(item)
+        (holder as CharacterViewHolder).bind(item)
     }
 }
 

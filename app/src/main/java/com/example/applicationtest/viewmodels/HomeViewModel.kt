@@ -48,24 +48,10 @@ class HomeViewModel constructor(
         return characters.value!!.data!!.toList()
     }
 
-    private fun addCharacter() {
-        viewModelScope.launch {
-            try {
-                //_loadingState.value = LoadingState.LOADING
-                //characterRepository.addCharacter()
-                //_loadingState.value = LoadingState.LOADED
-            } catch (e: Exception) {
-                //_loadingState.value = LoadingState.error(e.message)
-            }
-        }
-    }
-
     fun updateItems()
     {
         Log.d("TAG", "test");
         _text.value = "toto";
         var toto = "toto"
-
-        addCharacter()
     }
 }

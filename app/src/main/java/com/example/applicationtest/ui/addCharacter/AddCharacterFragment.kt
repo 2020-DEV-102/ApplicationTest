@@ -11,6 +11,7 @@ import com.example.applicationtest.databinding.AddCharacterFragmentBinding
 import com.example.applicationtest.utilities.ContextExtensions.hideKeyboard
 import com.example.applicationtest.viewmodels.AddCharacterViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -29,15 +30,25 @@ class AddCharacterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = AddCharacterFragmentBinding.inflate(inflater, container, false )
-        addListeners()
+        addListeners(binding.root)
         return binding.root
     }
 
-    private fun addListeners()
+    private fun addListeners(view : View)
     {
         binding.addCharacterButton.setOnClickListener()
         {
-            addCharacterViewModel.addCharacter(binding.name.text.toString(), binding.description.text.toString() )
+            try {
+                addCharacterViewModel.addCharacter(
+                    binding.name.text.toString(),
+                    binding.description.text.toString()
+                )
+                requireActivity().onBackPressed()
+            }
+            catch (e : Exception)
+            {
+
+            }
         }
 
         binding.cancelButton.setOnClickListener()
@@ -45,9 +56,4 @@ class AddCharacterFragment : Fragment() {
             requireActivity().onBackPressed()
         }
     }
-
-    /*override fun onDestroyView() {
-        super.onDestroyView()
-        hideKeyboard()
-    }*/
 }

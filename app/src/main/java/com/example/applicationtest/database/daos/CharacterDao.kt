@@ -19,6 +19,9 @@ interface CharacterDao {
    /* @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(characters: Array<Character>)*/
 
+    @Query("SELECT * FROM character WHERE cid=:characterId")
+    suspend fun findById(characterId: Int): Character
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg characters: Character)
 

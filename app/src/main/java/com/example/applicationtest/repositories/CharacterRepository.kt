@@ -9,6 +9,13 @@ import kotlinx.coroutines.channels.produce
 
 class CharacterRepository constructor (private val characterDao: CharacterDao)  {
 
+    private val _selectedCharacter = MediatorLiveData<Resource<Character>>()
+    val selectedCharacter: LiveData<Resource<Character>>
+        get() {
+            return _selectedCharacter
+        }
+
+
     private val _characters = MediatorLiveData<Resource<Array<Character>>>()
     val characters: LiveData<Resource<Array<Character>>>
         get() {
@@ -27,6 +34,12 @@ class CharacterRepository constructor (private val characterDao: CharacterDao)  
         _characters.addSource(sourceDb) {
             _characters.postValue(Resource.success(it))
         }
+    }
+
+    suspend fun getCharacterById(characterId : Int) : Character
+    {
+        var char = characterDao.findById(characterId)
+        return char
     }
 
     suspend fun addCharacter(character : Character)

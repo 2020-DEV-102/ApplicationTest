@@ -18,7 +18,7 @@
             android:windowSoftInputMode="stateAlwaysVisible|adjustResize"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".activities.ItemDetailActivity"
+            android:name=".activities.CharacterDetailActivity"
             android:label="@string/title_activity_item_detail"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
