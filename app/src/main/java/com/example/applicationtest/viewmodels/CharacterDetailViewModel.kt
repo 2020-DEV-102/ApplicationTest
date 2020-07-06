@@ -13,7 +13,7 @@ import org.koin.core.inject
 import org.koin.experimental.property.inject
 import org.koin.java.KoinJavaComponent.inject
 
-class ItemDetailViewModel (selectedCharacterId: Int) : ViewModel(), KoinComponent {
+class CharacterDetailViewModel (selectedCharacterId: Int) : ViewModel(), KoinComponent {
 
     private val characterRepository by inject<CharacterRepository>()
     var character : Character = Character(name="",description="")

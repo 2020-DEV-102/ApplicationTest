@@ -32,7 +32,7 @@
 
     <fragment
         android:id="@+id/nav_item_detail"
-        android:name="com.example.applicationtest.ui.itemDetail.CharacterDetailFragment"
+        android:name="com.example.applicationtest.ui.characterDetail.CharacterDetailFragment"
         tools:layout="@layout/character_detail_fragment" />
 
     <fragment

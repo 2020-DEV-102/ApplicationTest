@@ -4,12 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.applicationtest.database.entities.Character
 import com.example.applicationtest.models.Item
-import com.example.applicationtest.viewmodels.ItemDetailViewModel
+import com.example.applicationtest.viewmodels.CharacterDetailViewModel
 
 @Suppress("UNCHECKED_CAST")
-class ItemDetailViewModelFactory (private val characterId : Int?) : ViewModelProvider.Factory {
+class CharacterDetailViewModelFactory (private val characterId : Int?) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return ItemDetailViewModel(characterId!!) as T
+        return CharacterDetailViewModel(characterId!!) as T
     }
 }
