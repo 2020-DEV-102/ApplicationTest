@@ -19,7 +19,7 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activities.CharacterDetailActivity"
-            android:label="@string/title_activity_item_detail"
+            android:label="@string/title_activity_character_detail"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.MainActivity"

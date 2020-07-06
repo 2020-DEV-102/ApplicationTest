@@ -6,20 +6,11 @@ import com.example.applicationtest.repositories.CharacterRepository
 import com.example.applicationtest.viewmodels.AddCharacterViewModel
 import com.example.applicationtest.viewmodels.HomeViewModel
 import com.example.applicationtest.utilities.Constants
-import com.example.applicationtest.viewmodels.ItemDetailViewModel
+import com.example.applicationtest.viewmodels.CharacterDetailViewModel
 import org.koin.dsl.module
 import org.koin.androidx.viewmodel.dsl.viewModel
 
 val appModule = module {
-    /*single {
-        GsonBuilder()
-            .excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.STATIC)
-            .serializeNulls()
-            .registerTypeAdapter(Character::class.java, CoinTypeAdapter())
-            .excludeFieldsWithoutExposeAnnotation()
-            .create()
-    }*/
-    //single { CoinResultDeserializer(get()) }
     single {
         Room.databaseBuilder(get(), AppDatabase::class.java, Constants.AppDatabase)
             .build()
@@ -31,5 +22,5 @@ val appModule = module {
 
     viewModel { HomeViewModel(get()) }
     viewModel { AddCharacterViewModel(get()) }
-    viewModel { ItemDetailViewModel(get()) }
+    viewModel { CharacterDetailViewModel(get()) }
 }

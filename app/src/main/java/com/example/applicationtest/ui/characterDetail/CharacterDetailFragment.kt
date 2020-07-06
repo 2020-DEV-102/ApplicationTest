@@ -1,23 +1,21 @@
-package com.example.applicationtest.ui.itemDetail
+package com.example.applicationtest.ui.characterDetail
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.applicationtest.databinding.CharacterDetailFragmentBinding
-import com.example.applicationtest.factories.ItemDetailViewModelFactory
-import com.example.applicationtest.viewmodels.ItemDetailViewModel
+import com.example.applicationtest.factories.CharacterDetailViewModelFactory
+import com.example.applicationtest.viewmodels.CharacterDetailViewModel
 
 
 class CharacterDetailFragment : Fragment() {
 
     private lateinit var binding : CharacterDetailFragmentBinding
     private var characterId : Int = 0
-    private lateinit var itemDetailViewModel : ItemDetailViewModel
+    private lateinit var itemDetailViewModel : CharacterDetailViewModel
 
     companion object {
         @JvmStatic
@@ -39,8 +37,8 @@ class CharacterDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val myItemDetailViewModel: ItemDetailViewModel by viewModels {
-            ItemDetailViewModelFactory(characterId)
+        val myItemDetailViewModel: CharacterDetailViewModel by viewModels {
+            CharacterDetailViewModelFactory(characterId)
         }
         itemDetailViewModel = myItemDetailViewModel
 
